@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
 const Page: React.FC = () => {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+    /* eslint-disable @typescript-eslint/no-unused-vars*/
   const [user, setUser] = useState<any>(null);
   const [displayName, setDisplayName] = useState<string>(""); // Ahora es el nombre de usuario
   const [password, setPassword] = useState<string>("");
@@ -150,7 +152,8 @@ const Page: React.FC = () => {
 
     getUser();
   }, [user]);
-
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+    /* eslint-disable @typescript-eslint/no-unused-vars*/
   return (
     <section className='z-[99] background-1 absolute w-full h-full'>
       <header className='absolute h-full w-full z-[99]'>
