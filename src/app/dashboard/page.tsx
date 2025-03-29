@@ -1,23 +1,65 @@
-
+"use client"
 /* eslint-disable @typescript-eslint/no-explicit-any */
     /* eslint-disable @typescript-eslint/no-unused-vars*/
 import HomeHeader from '@/components/HomeHeader'
 import HomeNav from '@/components/HomeNav'
-import { redirect } from "next/navigation";
-import { getUserWithRole } from "@/lib/auth";
-import React from 'react'
+import { auth, db } from '@/firebase/config';
+import { onAuthStateChanged } from 'firebase/auth';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react'
 
-const Home = async () => {
-  const user =  await getUserWithRole();
-  if (!user) redirect("/");
+const Home = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any 
+  const [user, setUser] = useState<any>(null);
+  const [uid, setUid] = useState("")
+  useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          setUser(currentUser);
+          setUid(currentUser?.uid || "");
+      });
 
-  // Si el usuario no es "user", "teacher", "admin" o "developer", lo redirige.
-  const allowedRoles = ["user", "teacher", "admin", "developer"];
-  if (!allowedRoles.includes(user.role)) redirect("/");
+      return () => unsubscribe();
+  }, []);
+  
+  const [userData, setUserData] = useState<{ año: string; calendario: string; grado: string; colegio: string; displayName: string } | null>(null);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const usersRef = collection(db, "users");
+                const q = query(usersRef, where("uid", "==", uid));
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    const docData = querySnapshot.docs[0].data();
+                    setUserData({
+                        año: docData.año || "",
+                        calendario: docData.calendario || "",
+                        grado: docData.grado || "",
+                        colegio: docData.colegio || "",
+                        displayName: docData.displayName || ""
+                    });
+                }
+            } catch (error) {
+                console.error("Error obteniendo datos del usuario:", error);
+            }
+        };
+
+        if (uid) {
+            fetchUserData();
+        }
+    }, [uid]);
+
   return (
     <section className='relative z-[999]'>
         <HomeNav/>
-        <HomeHeader user='admin'año='2025' calendario='A' colegio='COLEGIO SAN ANTONIO' grado='Bachillerato'/>
+        {userData ? (
+                    <HomeHeader user={userData.displayName}año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado}/>
+                    
+            ) : (
+                    <HomeHeader user="Cargando ..." año="..." calendario="..." colegio="..." grado="..."/>
+            )}
+        
     </section>
     
   )

@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import HomeGradient from './HomeGradient'
 import HomeWelcome from './HomeWelcome'
