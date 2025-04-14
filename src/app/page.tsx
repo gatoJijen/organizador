@@ -17,7 +17,7 @@ const Page: React.FC = () => {
   const router = useRouter();
 
 
-  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año:string, calendario:string, colegio:string, grado:string, image: string) => {
+  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año:string, calendario:string, colegio:string, grado:string, image: string, email:string) => {
     try {
       const userRef = doc(db, "users", uid); // Crea un documento con el UID del usuario
       await setDoc(userRef, {
@@ -62,7 +62,7 @@ const Page: React.FC = () => {
       });
 
       // Guarda el usuario en Firestore
-      await saveUserToFirestore(user.uid, defaultDisplayName, defaultPhotoURL, defaultCategory, defaultPlan, defaultYear, defaultCalendary,defaultColage, defaultGrade, photoURL);
+      await saveUserToFirestore(user.uid, defaultDisplayName, defaultPhotoURL, defaultCategory, defaultPlan, defaultYear, defaultCalendary,defaultColage, defaultGrade, photoURL, email);
 
       router.push("/dashboard");
     } catch (err: any) {
@@ -97,6 +97,7 @@ const Page: React.FC = () => {
       const displayName = user.displayName || "UsuarioG";
       const defaultPhotoURL = "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png"
       const photoURL = user.photoURL || defaultPhotoURL;
+      const Uemail = user.email || "error@gmail.com"
       const defaultCategory = "user"
       const defaultColage = "SAN ANTONIO"
       const defaultGrade = "Bachillerato"
@@ -105,7 +106,7 @@ const Page: React.FC = () => {
       const defaultYear = "2025"
 
       // Guarda el usuario en Firestore
-      await saveUserToFirestore(user.uid, displayName, photoURL, defaultCategory, defaultPlan,defaultYear, defaultCalendary, defaultColage, defaultGrade, photoURL);
+      await saveUserToFirestore(user.uid, displayName, photoURL, defaultCategory, defaultPlan,defaultYear, defaultCalendary, defaultColage, defaultGrade, photoURL, Uemail);
 
       router.push("/dashboard");
     } catch (err: any) {
