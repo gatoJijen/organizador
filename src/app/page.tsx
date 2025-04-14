@@ -17,7 +17,7 @@ const Page: React.FC = () => {
   const router = useRouter();
 
 
-  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año:string, calendario:string, colegio:string, grado:string) => {
+  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año:string, calendario:string, colegio:string, grado:string, image: string) => {
     try {
       const userRef = doc(db, "users", uid); // Crea un documento con el UID del usuario
       await setDoc(userRef, {
@@ -30,7 +30,8 @@ const Page: React.FC = () => {
         año,
         calendario,
         colegio,
-        grado
+        grado,
+        image
       });
       console.log("Usuario guardado en Firestore");
     } catch (err) {
@@ -46,8 +47,12 @@ const Page: React.FC = () => {
 
       // Actualiza el perfil del usuario en Firebase Authentication
       const defaultDisplayName = email.split("@")[0].replace(' ', '');
-      const defaultPhotoURL = user.photoURL || "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png";
-      const defaultCategory = ""
+      const defaultPhotoURL = "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png";
+      const photoURL = user.photoURL || defaultPhotoURL;
+      const defaultCategory = "user"
+      const defaultColage = "SAN ANTONIO"
+      const defaultGrade = "Bachillerato"
+      const defaultCalendary = "A"
       const defaultPlan = "test"
       const defaultYear = "2025"
 
@@ -57,7 +62,7 @@ const Page: React.FC = () => {
       });
 
       // Guarda el usuario en Firestore
-      await saveUserToFirestore(user.uid, defaultDisplayName, defaultPhotoURL, defaultCategory, defaultPlan, defaultYear, "", "", "");
+      await saveUserToFirestore(user.uid, defaultDisplayName, defaultPhotoURL, defaultCategory, defaultPlan, defaultYear, defaultCalendary,defaultColage, defaultGrade, photoURL);
 
       router.push("/dashboard");
     } catch (err: any) {
@@ -90,13 +95,17 @@ const Page: React.FC = () => {
       if (!user) throw new Error("No se pudo obtener el usuario.");
       // Usa los datos del usuario proporcionados por Google
       const displayName = user.displayName || "UsuarioG";
-      const photoURL = user.photoURL || "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png";
-      const defaultCategory = ""
+      const defaultPhotoURL = "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png"
+      const photoURL = user.photoURL || defaultPhotoURL;
+      const defaultCategory = "user"
+      const defaultColage = "SAN ANTONIO"
+      const defaultGrade = "Bachillerato"
+      const defaultCalendary = "A"
       const defaultPlan = "test"
       const defaultYear = "2025"
 
       // Guarda el usuario en Firestore
-      await saveUserToFirestore(user.uid, displayName, photoURL, defaultCategory, defaultPlan,defaultYear, "", "", "");
+      await saveUserToFirestore(user.uid, displayName, photoURL, defaultCategory, defaultPlan,defaultYear, defaultCalendary, defaultColage, defaultGrade, photoURL);
 
       router.push("/dashboard");
     } catch (err: any) {
@@ -134,29 +143,29 @@ const Page: React.FC = () => {
   /* eslint-disable @typescript-eslint/no-unused-vars*/
   /* eslint-disable @typescript-eslint/no-explicit-any */
   return (
-    <section className='z-[99] background-1 absolute w-full h-full'>
+    <section className='flex flex-col items-center justify-center'>
       <header className='absolute h-full w-full z-[99]'>
         <nav className='w-full relative h-full overflow-hidden cursor-default'>
-          <picture className='absolute top-[-145px] w-[100vw] mediaImageLogin scale-[130%] pointer-events-none'>
-            <Image priority src="https://static.cdninstagram.com/rsrc.php/yD/r/eIJhnL1FtGH.webp" alt='' width={2000} height={2000} />
+          <picture className='absolute w-[100vw] h-[100svh] pointer-events-none'>
+            <Image priority src="https://conpros3fili01.s3.amazonaws.com/uploads/background/default-background-norma.jpg" alt='' width={2000} height={100} />
           </picture>
         </nav>
       </header>
-      <article className='flex flex-col gap-1 justify-center h-full w-full pb-[44px] items-center z-[999]'>
-        <header className='mb-2 z-[999]'>
-          <h1 className='text-white text-base font-bold'>Inicia sesión con tu cuenta de Instagram</h1>
+      <article className='flex flex-col justify-center h-[100svh] pb-[60px] pt-[70px] px-[160px] w-[60svw]  items-center z-[999] '>
+        <header className='m-0 bg-logoLogin w-full h-full flex items-center justify-center z-[999] rounded-t-4xl'>
+          <Image className="w-[200px]  " src={"https://conpros3fili01.s3.amazonaws.com/uploads/logo/default-logo-norma.png"} alt="Norma logo" width={1000} height={100} />
         </header>
-        <section className='flex flex-col items-center w-full gap-2 z-[999]'>
+        <section className='flex flex-col items-center bg-white w-full h-full gap-2 pt-10 z-[999]'>
           <input
             onChange={(e) => setEmail(e.target.value)}
-            className='px-4 w-[370px] py-4 placeholder:text-white placeholder:text-opacity-40 rounded-[12px] background-4 fs-1 border border-white border-opacity-0 focus:border-opacity-15 focus:outline-none'
-            placeholder='Nombre de usuario, teléfono o correo electrónico'
+            className='px-4 w-[370px] py-4 placeholder:text-black/40 rounded-[12px] fs-1 border border-black/40 focus:border-opacity-15 focus:outline-none'
+            placeholder='Correo electrónico'
             type="email"
             value={email}
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
-            className='px-4 w-[370px] py-4 placeholder:text-white placeholder:text-opacity-40 rounded-[12px] background-4 fs-1 border border-white border-opacity-0 focus:border-opacity-15 focus:outline-none'
+            className='px-4 w-[370px] py-4 placeholder:text-black/40 rounded-[12px] fs-1 border border-black/40 focus:border-opacity-15 focus:outline-none'
             placeholder='Contraseña'
             type="password"
             value={password}
@@ -171,23 +180,22 @@ const Page: React.FC = () => {
 
           <button
             onClick={handleSubmit}  // Llamada correcta a handleSubmit
-            className={`bg-white px-4 w-[370px] py-4 text-black text-base font-bold rounded-[12px] ${loading || !email || !password ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+            className={` px-4 w-[370px] py-4 text-white text-base font-bold rounded-[12px] ${loading || !email || !password ? 'cursor-not-allowed opacity-60 bg-gray-500' : 'cursor-pointer bg-blue-500'}`}
             disabled={loading || !email || !password}  // Deshabilitar el botón si está cargando o si los campos están vacíos
           >
             <p>{loading ? "Cargando..." : "Inicia sesión"}</p>
           </button>
         </section>
-        <footer className='flex flex-col mt-3 w-full h-20 justify-between items-center gap-5 z-[999]'>
-          <div className='flex justify-center items-center gap-4 text-white text-opacity-30 fs-1'>
+        <footer className='flex flex-col bg-white w-full pb-12 h-full pt-[20px] justify-between items-center gap-5 z-[999]'>
+          <div className='flex justify-center items-center gap-4 text-black/60 fs-1'>
             <div className='w-6 h-[1px] border-t opacity-25'></div>o<div className='w-6 h-[1px] border-t opacity-25'></div>
           </div>
           <button
             onClick={googleRegister}
-            className='background-1 flex gap-4 items-center justify-between border border-white border-opacity-20 px-4 w-[370px] py-4 rounded-[12px] fs-1'
+            className='background-1 flex gap-4 items-center justify-center border border-black/40 px-4 w-[370px] py-6 rounded-[12px] fs-1 cursor-pointer'
             disabled={loading}
           >
-            <picture className='background-image-1 w-[45px] h-[45px] inline-block'></picture>
-            <h2 className='text-base font-bold'>Continuar con Instagram</h2>
+            <h2 className='text-base text-black font-bold'>Continuar con Google</h2>
             <article className='rotate-180'>
             </article>
           </button>

@@ -1,38 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
   --nav-bg: #27272F;
+  --logoLogin-bg: #414040;
   --home-background: #111827;
   --text-primary-color: #fff;
+  --text-secondary-color: #000;
   --text-primary-color-40: #ffffffa9;
-  --span-bg: rgba(79,85,113,0.35)
+  --toolbar: #27272F;
+  --span-bg: rgba(79,85,113,0.35);
+  --gradient-home: linear-gradient(0deg, #0e0e1b 40%, #27272f9d);
+  
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --nav-bg: #27272F;
-    --home-background: #111827;
-    --text-primary-color: #fff;
-    --text-primary-color-40: #ffffffa9;
-    --span-bg: rgba(79,85,113,0.35)
+.dark {
+  --background: #ffffff;
+  --foreground: #171717;
+  --nav-bg: #27272F;
+  --logoLogin-bg: #414040;
+  --home-background: #111827;
+  --text-primary-color: #000;
+  --text-primary-color-40: #000000  ;
+  --text-secondary-color: #fff;
+  --toolbar: #27272F;
+  --span-bg: #fff9;
+  --gradient-home: linear-gradient(0deg,#faf8fc 40%,#27272f9d)
   }
-}
+
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-foreground {
+  background-color: var(--foreground);
+}
+.bg-background {
+  background-color: var(--background);
 }
 
 .bg-nav {
@@ -43,11 +57,14 @@ body {
 }
 
 .bg-gradientP {
-  background: linear-gradient(0deg, #0e0e1b 40%, #27272f9d);;
+  background: var(--gradient-home);
 }
 
 .primary-text {
   color: var(--text-primary-color);
+}
+.secondary-text {
+  color: var(--text-secondary-color);
 }
 .primary-text-40 {
   color: var(--text-primary-color-40);
@@ -61,4 +78,20 @@ body {
 
 .bg-span {
   background-color: var(--span-bg);
+}
+
+.bg-toolbar {
+  background-color: var(--toolbar);
+}
+
+.htoolbar-text{
+  color: #000 !important
+}
+
+.toolbar-text{
+  color: #fff !important
+}
+
+.bg-logoLogin {
+  background-color: var(--logoLogin-bg);
 }

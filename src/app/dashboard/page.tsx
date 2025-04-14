@@ -6,22 +6,35 @@ import HomeNav from '@/components/HomeNav'
 import { auth, db } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 const Home = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any 
   const [user, setUser] = useState<any>(null);
   const [uid, setUid] = useState("")
+  const [loading, setLoading] = useState(true);
+  const router = useRouter ();
+  const redirect = (url: string) => {
+    router.push(url);
+  };
+
+
   useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
           setUser(currentUser);
           setUid(currentUser?.uid || "");
+          if (!currentUser) {
+            redirect("/")
+          }
       });
+      
+
 
       return () => unsubscribe();
   }, []);
   
-  const [userData, setUserData] = useState<{ año: string; calendario: string; grado: string; colegio: string; displayName: string } | null>(null);
+  const [userData, setUserData] = useState<{ año: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email:string } | null>(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -33,11 +46,13 @@ const Home = () => {
                 if (!querySnapshot.empty) {
                     const docData = querySnapshot.docs[0].data();
                     setUserData({
+                        email: docData.email,
                         año: docData.año || "",
                         calendario: docData.calendario || "",
                         grado: docData.grado || "",
                         colegio: docData.colegio || "",
-                        displayName: docData.displayName || ""
+                        displayName: docData.displayName || "",
+                        image: docData.image || "",
                     });
                 }
             } catch (error) {
@@ -52,7 +67,7 @@ const Home = () => {
 
   return (
     <section className='relative z-[999]'>
-        <HomeNav/>
+        <HomeNav user={userData?.displayName || "Cargando..."} email={userData?.email || userData?.displayName || "Cargando"} image={userData?.image || "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png"}/>
         {userData ? (
                     <HomeHeader user={userData.displayName}año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado}/>
                     
