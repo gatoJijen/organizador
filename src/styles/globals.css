@@ -8,18 +8,15 @@
   --home-background: #111827;
   --text-primary-color: #fff;
   --text-secondary-color: #000;
-  --text-primary-color-40: #ffffffa9;
+  --text-primary-color-40: #ffffff99;
   --toolbar: #27272F;
   --span-bg: rgba(79,85,113,0.35);
   --gradient-home: linear-gradient(0deg, #0e0e1b 40%, #27272f9d);
+  --gradient-heart: linear-gradient(180deg, #23374b5c, #23374b);
+  --heart-color: #1414143d;
   
 }
 
-@theme inline {
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
 .dark {
   --background: #ffffff;
@@ -32,7 +29,9 @@
   --text-secondary-color: #fff;
   --toolbar: #27272F;
   --span-bg: #fff9;
-  --gradient-home: linear-gradient(0deg,#faf8fc 40%,#27272f9d)
+  --gradient-home: linear-gradient(0deg,#faf8fc 40%,#27272f9d);
+  --gradient-heart: linear-gradient(180deg, #23374b5c, #23374b);
+  --heart-color: #1414143d;
   }
 
 
@@ -58,6 +57,10 @@ body {
 
 .bg-gradientP {
   background: var(--gradient-home);
+}
+.bg-gradientHeart {
+  background: var(--gradient-heart);
+  object-fit: cover;
 }
 
 .primary-text {
@@ -95,3 +98,8 @@ body {
 .bg-logoLogin {
   background-color: var(--logoLogin-bg);
 }
+
+.bg-heart {
+  background-color: var(--heart-color);
+}
+

@@ -1,6 +1,6 @@
 "use client"
 /* eslint-disable @typescript-eslint/no-explicit-any */
-    /* eslint-disable @typescript-eslint/no-unused-vars*/
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 import HomeHeader from '@/components/HomeHeader'
 import HomeNav from '@/components/HomeNav'
 import { auth, db } from '@/firebase/config';
@@ -9,32 +9,34 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
+
 const Home = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any 
-  const [user, setUser] = useState<any>(null);
-  const [uid, setUid] = useState("")
-  const [loading, setLoading] = useState(true);
-  const router = useRouter ();
-  const redirect = (url: string) => {
-    router.push(url);
-  };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any 
+    const [user, setUser] = useState<any>(null);
+    const [uid, setUid] = useState("")
+    const [loading, setLoading] = useState(true);
+    const router = useRouter();
+    const redirect = (url: string) => {
+        router.push(url);
+    };
 
 
-  useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-          setUser(currentUser);
-          setUid(currentUser?.uid || "");
-          if (!currentUser) {
-            redirect("/")
-          }
-      });
-      
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setUid(currentUser?.uid || "");
+            if (!currentUser) {
+                redirect("/")
+            }
+        });
 
 
-      return () => unsubscribe();
-  }, []);
-  
-  const [userData, setUserData] = useState<{ año: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email:string } | null>(null);
+
+        return () => unsubscribe();
+    }, []);
+
+    const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string } | null>(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -53,6 +55,7 @@ const Home = () => {
                         colegio: docData.colegio || "",
                         displayName: docData.displayName || "",
                         image: docData.image || "",
+                        plan: docData.plan || "test",
                     });
                 }
             } catch (error) {
@@ -65,22 +68,23 @@ const Home = () => {
         }
     }, [uid]);
 
-  return (
-    <section className='relative z-[999]'>
-        <HomeNav user={userData?.displayName || "Cargando..."} email={userData?.email || userData?.displayName || "Cargando"} image={userData?.image || "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png"}/>
-        {userData ? (
-                    <HomeHeader user={userData.displayName}año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado}/>
-                    
+    return (
+        <section className='relative z-[999]'>
+            <HomeNav user={userData?.displayName || "Cargando..."} email={userData?.email || userData?.displayName || "Cargando"} image={userData?.image || "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png"} />
+            {userData ? (
+                <HomeHeader user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} />
+
             ) : (
-                    <HomeHeader user="Cargando ..." año="..." calendario="..." colegio="..." grado="..."/>
+                <HomeHeader user="Cargando ..." año="..." calendario="..." colegio="..." grado="..." plan="test" />
             )}
-        
-    </section>
-    
-  )
+            
+
+        </section>
+
+    )
 }
 
 export default Home
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-    /* eslint-disable @typescript-eslint/no-unused-vars*/
+/* eslint-disable @typescript-eslint/no-unused-vars*/

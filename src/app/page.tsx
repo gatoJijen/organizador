@@ -17,7 +17,7 @@ const Page: React.FC = () => {
   const router = useRouter();
 
 
-  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año:string, calendario:string, colegio:string, grado:string, image: string, email:string) => {
+  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string) => {
     try {
       const userRef = doc(db, "users", uid); // Crea un documento con el UID del usuario
       await setDoc(userRef, {
@@ -62,7 +62,7 @@ const Page: React.FC = () => {
       });
 
       // Guarda el usuario en Firestore
-      await saveUserToFirestore(user.uid, defaultDisplayName, defaultPhotoURL, defaultCategory, defaultPlan, defaultYear, defaultCalendary,defaultColage, defaultGrade, photoURL, email);
+      await saveUserToFirestore(user.uid, defaultDisplayName, defaultPhotoURL, defaultCategory, defaultPlan, defaultYear, defaultCalendary, defaultColage, defaultGrade, photoURL, email);
 
       router.push("/dashboard");
     } catch (err: any) {
@@ -106,7 +106,7 @@ const Page: React.FC = () => {
       const defaultYear = "2025"
 
       // Guarda el usuario en Firestore
-      await saveUserToFirestore(user.uid, displayName, photoURL, defaultCategory, defaultPlan,defaultYear, defaultCalendary, defaultColage, defaultGrade, photoURL, Uemail);
+      await saveUserToFirestore(user.uid, displayName, photoURL, defaultCategory, defaultPlan, defaultYear, defaultCalendary, defaultColage, defaultGrade, photoURL, Uemail);
 
       router.push("/dashboard");
     } catch (err: any) {
@@ -141,6 +141,12 @@ const Page: React.FC = () => {
 
     return () => unsubscribe(); // Limpia el listener cuando el componente se desmonta
   }, [router]);
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSubmit(e as React.FormEvent);
+    }
+  };
   /* eslint-disable @typescript-eslint/no-unused-vars*/
   /* eslint-disable @typescript-eslint/no-explicit-any */
   return (
@@ -156,7 +162,7 @@ const Page: React.FC = () => {
         <header className='m-0 bg-logoLogin w-full h-full flex items-center justify-center z-[999] rounded-t-4xl'>
           <Image className="w-[200px]  " src={"https://conpros3fili01.s3.amazonaws.com/uploads/logo/default-logo-norma.png"} alt="Norma logo" width={1000} height={100} />
         </header>
-        <section className='flex flex-col items-center bg-white w-full h-full gap-2 pt-10 z-[999]'>
+        <section className='flex flex-col items-center bg-white w-full h-full gap-2 pt-10 z-[999] text-black'>
           <input
             onChange={(e) => setEmail(e.target.value)}
             className='px-4 w-[370px] py-4 placeholder:text-black/40 rounded-[12px] fs-1 border border-black/40 focus:border-opacity-15 focus:outline-none'
@@ -168,6 +174,7 @@ const Page: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             className='px-4 w-[370px] py-4 placeholder:text-black/40 rounded-[12px] fs-1 border border-black/40 focus:border-opacity-15 focus:outline-none'
             placeholder='Contraseña'
+            onKeyUp={handleKeyPress}
             type="password"
             value={password}
           />

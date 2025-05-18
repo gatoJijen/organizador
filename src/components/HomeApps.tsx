@@ -1,9 +1,25 @@
 import React from 'react'
+import App from './App1'
 
-const HomeApps = () => {
+interface PropsHomeApps {
+    plan: string
+}
+
+const HomeApps: React.FC<PropsHomeApps> = ({ plan }) => {
   return (
     <article className='relative  z-10'>
         <h1 className='primary-text font-bold text-[23px]'>Todas las aplicaciones</h1>
+        <div className='w-[90dvw] h-[full] flex pb-4 justify-start py-4 px-2 gap-4 overflow-x-auto overflow-y-hidden items-center'>
+          {plan === "test" ? (
+            <>
+            <App />
+            </>
+        ) : (
+            <div className='bg-secondary rounded-full text-white text-lg px-3 py-1'>
+                <p>gratis</p>
+            </div>
+        )}
+        </div>
         
     </article>
   )
