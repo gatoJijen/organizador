@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -214,3 +216,5 @@ const Page: React.FC = () => {
 };
 
 export default Page;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

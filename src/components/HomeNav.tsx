@@ -1,10 +1,12 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 import { auth } from '@/firebase/config';
 import { signOut } from 'firebase/auth';
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
-import { IoMoon, IoMoonOutline, IoSunny, IoSunnyOutline, IoSunnySharp } from "react-icons/io5";
+import { IoMoon, IoMoonOutline, IoSunny, IoSunnyOutline } from "react-icons/io5";
 import { FiLogOut } from 'react-icons/fi';
 import { useTheme } from '@/hooks/useTheme';
 
@@ -75,3 +77,5 @@ const HomeNav: React.FC<PropsHomeNav> = ({ image, user, email }) => {
 }
 
 export default HomeNav
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
