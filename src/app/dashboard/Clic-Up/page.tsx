@@ -9,8 +9,8 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import Loading from '@/components/Loading';
 import App1Sidebar from '@/components/App1Sidebar';
 
-const page = () => {
-    const [user, setUser] = useState<any>(null);
+const Page = () => {
+    const [user, setUser] = useState<any | null>(null);
     const [uid, setUid] = useState("")
     const [loading, setLoading] = useState(true);
     const router = useRouter();
@@ -19,17 +19,16 @@ const page = () => {
     };
 
 
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setUid(currentUser?.uid || "");
             if (!currentUser) {
                 redirect("/")
+            } else {
+                setLoading(false);
             }
         });
-
-
 
         return () => unsubscribe();
     }, []);
@@ -81,6 +80,6 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars*/
