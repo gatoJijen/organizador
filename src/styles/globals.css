@@ -2,12 +2,14 @@
 
 :root {
   --background: #0a0a0a;
+  --background-2: #fff;
   --foreground: #ededed;
   --nav-bg: #27272F;
   --logoLogin-bg: #414040;
   --home-background: #111827;
   --text-primary-color: #fff;
   --text-secondary-color: #000;
+  --text-secondary-color-60: rgba(0, 0, 0, 0.2);
   --text-primary-color-40: #ffffff99;
   --toolbar: #27272F;
   --span-bg: rgba(79,85,113,0.35);
@@ -20,6 +22,7 @@
 
 .dark {
   --background: #ffffff;
+  --background-2: #000;
   --foreground: #171717;
   --nav-bg: #27272F;
   --logoLogin-bg: #414040;
@@ -27,6 +30,7 @@
   --text-primary-color: #000;
   --text-primary-color-40: #000000  ;
   --text-secondary-color: #fff;
+  --text-secondary-color-60: rgba(255, 255, 255, 0.2);
   --toolbar: #27272F;
   --span-bg: #fff9;
   --gradient-home: linear-gradient(0deg,#faf8fc 40%,#27272f9d);
@@ -44,8 +48,18 @@ body {
 .bg-foreground {
   background-color: var(--foreground);
 }
+.hover-bg-foreground:hover {
+  background-color: var(--foreground);
+}
 .bg-background {
   background-color: var(--background);
+}
+.bg-background-2 {
+  background-color: var(--background-2);
+}
+
+.App1Li:hover>p {
+  color: var(--text-secondary-color)
 }
 
 .bg-nav {
@@ -54,7 +68,12 @@ body {
 .bg-home {
   background-color: var(--home-background )
 }
-
+.border-secondary-color {
+  border-color: var(--text-secondary-color);
+}
+.border-secondary-color-60 {
+  border-color: var(--text-secondary-color-60);
+}
 .bg-gradientP {
   background: var(--gradient-home);
 }

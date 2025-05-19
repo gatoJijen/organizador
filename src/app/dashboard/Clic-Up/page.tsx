@@ -1,17 +1,13 @@
 "use client"
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
-import HomeHeader from '@/components/HomeHeader'
-import HomeNav from '@/components/HomeNav'
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation';
 import { auth, db } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
 import Loading from '@/components/Loading';
+import App1Sidebar from '@/components/App1Sidebar';
 
-
-const Home = () => {
+const page = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any 
     const [user, setUser] = useState<any>(null);
     const [uid, setUid] = useState("")
@@ -68,24 +64,20 @@ const Home = () => {
             fetchUserData();
         }
     }, [uid]);
-
     return (
         <section className='relative z-[999]'>
-            <HomeNav user={userData?.displayName || "Cargando..."} email={userData?.email || userData?.displayName || "Cargando"} image={userData?.image || "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png"} />
             {userData ? (
-                <HomeHeader user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} />
+                <div className='w-full h-full'>
+                    <App1Sidebar />
+                </div>
 
             ) : (
-                <Loading/>
+                <Loading />
             )}
-            
+
 
         </section>
-
     )
 }
 
-export default Home
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
+export default page

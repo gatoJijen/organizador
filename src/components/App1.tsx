@@ -4,7 +4,7 @@ import { FaRegHeart } from 'react-icons/fa6';
 import Link from 'next/link'
 const App = () => {
   return (
-    <Link href='/norma-click-up' className='w-[156.47px] overflow-hidden flex flex-col gap-2 flex-shrink-0 z-[9999] cursor-pointer relative'>
+    <Link href='/dashboard/Clic-Up' className='w-[156.47px] overflow-hidden flex flex-col gap-2 flex-shrink-0 z-[9999] cursor-pointer relative'>
       <header className='overflow-hidden rounded-xl relative'>
         <button className='absolute w-[28px] h-[29px] rounded-full flex items-center justify-center bg-heart z-[999] top-4 right-3'>
           <FaRegHeart size={14} className='' />

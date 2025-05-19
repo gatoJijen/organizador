@@ -162,7 +162,7 @@ const Page: React.FC = () => {
       </header>
       <article className='flex flex-col justify-center h-[100svh] pb-[60px] pt-[70px] px-[160px] w-[60svw]  items-center z-[999] '>
         <header className='m-0 bg-logoLogin w-full h-full flex items-center justify-center z-[999] rounded-t-4xl'>
-          <Image className="w-[200px]  " src={"https://conpros3fili01.s3.amazonaws.com/uploads/logo/default-logo-norma.png"} alt="Norma logo" width={1000} height={100} />
+          <Image className="w-[200px]  " src={"https://conpros3fili01.s3.amazonaws.com/uploads/logo/default-logo-norma.png"} alt="Norma logo" width={190} height={90} />
         </header>
         <section className='flex flex-col items-center bg-white w-full h-full gap-2 pt-10 z-[999] text-black'>
           <input
