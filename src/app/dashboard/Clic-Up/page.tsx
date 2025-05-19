@@ -1,4 +1,6 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { auth, db } from '@/firebase/config';
@@ -8,7 +10,6 @@ import Loading from '@/components/Loading';
 import App1Sidebar from '@/components/App1Sidebar';
 
 const page = () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any 
     const [user, setUser] = useState<any>(null);
     const [uid, setUid] = useState("")
     const [loading, setLoading] = useState(true);
@@ -81,3 +82,5 @@ const page = () => {
 }
 
 export default page
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

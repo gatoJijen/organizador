@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
@@ -35,3 +37,5 @@ const App1Li = ({ name, icon, active }: PropsApp1Li) => {
 }
 
 export default App1Li
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

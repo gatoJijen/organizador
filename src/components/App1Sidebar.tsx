@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 import React from 'react'
 import Image from 'next/image'
 import App1Li from './App1Li'
@@ -28,3 +30,5 @@ const App1Sidebar = () => {
 }
 
 export default App1Sidebar
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

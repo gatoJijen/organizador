@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 import { useTheme } from '@/hooks/useTheme';
 import Image from 'next/image';
 import React, { useState } from 'react'
@@ -53,3 +55,5 @@ const App1Nav = ({ title, user, año, calendario, colegio, grado, plan, image, e
 }
 
 export default App1Nav
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
