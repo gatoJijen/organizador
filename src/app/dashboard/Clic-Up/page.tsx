@@ -8,6 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import Loading from '@/components/Loading';
 import App1Sidebar from '@/components/App1Sidebar';
+import App1Nav from '@/components/App1Nav';
 
 const Page = () => {
     const [user, setUser] = useState<any | null>(null);
@@ -33,7 +34,7 @@ const Page = () => {
         return () => unsubscribe();
     }, []);
 
-    const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string } | null>(null);
+    const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string, categoria: string } | null>(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -53,6 +54,7 @@ const Page = () => {
                         displayName: docData.displayName || "",
                         image: docData.image || "",
                         plan: docData.plan || "test",
+                        categoria: docData.categoria || "",
                     });
                 }
             } catch (error) {
@@ -65,10 +67,11 @@ const Page = () => {
         }
     }, [uid]);
     return (
-        <section className='relative z-[999]'>
+        <section className='relative z-[999] bg-background-2'>
             {userData ? (
-                <div className='w-full h-full'>
+                <div className='w-[100vw] flex h-[100vh]'>
                     <App1Sidebar />
+                    <App1Nav title="Hola" user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} image={userData.image} email={userData.email} categoria={userData.categoria}/>
                 </div>
 
             ) : (

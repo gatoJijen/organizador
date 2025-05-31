@@ -12,6 +12,8 @@
   --text-secondary-color-60: rgba(0, 0, 0, 0.2);
   --text-primary-color-40: #ffffff99;
   --toolbar: #27272F;
+  --app1-nav-bg: #E7E8E9;
+  --lighter-bg: #fafafa;
   --span-bg: rgba(79,85,113,0.35);
   --gradient-home: linear-gradient(0deg, #0e0e1b 40%, #27272f9d);
   --gradient-heart: linear-gradient(180deg, #23374b5c, #23374b);
@@ -60,6 +62,12 @@ body {
 
 .App1Li:hover>p {
   color: var(--text-secondary-color)
+}
+.bg-app1-nav {
+  background-color: var(--app1-nav-bg);
+}
+.bg-lighter {
+  background-color: var(--lighter-bg);
 }
 
 .bg-nav {
