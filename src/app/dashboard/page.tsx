@@ -37,7 +37,7 @@ const Home = () => {
         return () => unsubscribe();
     }, []);
 
-    const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string } | null>(null);
+    const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string, categoria: string } | null>(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -57,6 +57,7 @@ const Home = () => {
                         displayName: docData.displayName || "",
                         image: docData.image || "",
                         plan: docData.plan || "test",
+                        categoria: docData.categoria || "",
                     });
                 }
             } catch (error) {
@@ -73,7 +74,7 @@ const Home = () => {
         <section className='relative z-[999]'>
             <HomeNav user={userData?.displayName || "Cargando..."} email={userData?.email || userData?.displayName || "Cargando"} image={userData?.image || "https://www.instagram.com/static/images/text_app/profile_picture/profile_pic.png/72f3228a91ee.png"} />
             {userData ? (
-                <HomeHeader user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} />
+                <HomeHeader user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} categoria={userData.categoria} />
 
             ) : (
                 <Loading/>

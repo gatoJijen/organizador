@@ -9,6 +9,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import Loading from '@/components/Loading';
 import App1Sidebar from '@/components/App1Sidebar';
 import App1Nav from '@/components/App1Nav';
+import App1Dashboard from '@/components/App1Dashboard';
 
 const Page = () => {
     const [user, setUser] = useState<any | null>(null);
@@ -69,9 +70,13 @@ const Page = () => {
     return (
         <section className='relative z-[999] bg-background-2'>
             {userData ? (
-                <div className='w-[100vw] flex h-[100vh]'>
+                <div className='w-[100svw] flex h-[100svh]'>
                     <App1Sidebar />
-                    <App1Nav title="Hola" user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} image={userData.image} email={userData.email} categoria={userData.categoria}/>
+                    <section className="flex flex-col flex-wrap w-[100%] ">
+                        <App1Nav title="Hola" user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} image={userData.image} email={userData.email} categoria={userData.categoria} />
+                        <App1Dashboard/>
+                    </section>
+
                 </div>
 
             ) : (

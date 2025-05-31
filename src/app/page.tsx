@@ -19,7 +19,7 @@ const Page: React.FC = () => {
   const router = useRouter();
 
 
-  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string) => {
+  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string, resources: any[], chats: any[], newChats: any[], newEvents: any[], newNews: any[]) => {
     try {
       const userRef = doc(db, "users", uid); // Crea un documento con el UID del usuario
       await setDoc(userRef, {
@@ -33,7 +33,12 @@ const Page: React.FC = () => {
         calendario,
         colegio,
         grado,
-        image
+        image,
+        resources,
+        chats,
+        newChats,
+        newEvents,
+        newNews
       });
       console.log("Usuario guardado en Firestore");
     } catch (err) {
@@ -57,6 +62,11 @@ const Page: React.FC = () => {
       const defaultCalendary = "A"
       const defaultPlan = "test"
       const defaultYear = "2025"
+      const defaultResources: any[] = []
+      const defaultChats: any[] = []
+      const defaultNewChats: any[] = []
+      const defaultNewEvents: any[] = []
+      const defaultNewNews: any[] = []
 
       await updateProfile(user, {
         displayName: defaultDisplayName,
@@ -64,7 +74,24 @@ const Page: React.FC = () => {
       });
 
       // Guarda el usuario en Firestore
-      await saveUserToFirestore(user.uid, defaultDisplayName, defaultPhotoURL, defaultCategory, defaultPlan, defaultYear, defaultCalendary, defaultColage, defaultGrade, photoURL, email);
+      await saveUserToFirestore(
+        user.uid,
+        defaultDisplayName,
+        defaultPhotoURL,
+        defaultCategory,
+        defaultPlan,
+        defaultYear,
+        defaultCalendary,
+        defaultColage,
+        defaultGrade,
+        photoURL,
+        email,
+        defaultResources,
+        defaultChats,
+        defaultNewChats,
+        defaultNewEvents,
+        defaultNewNews
+      );
 
       router.push("/dashboard");
     } catch (err: any) {
@@ -106,9 +133,31 @@ const Page: React.FC = () => {
       const defaultCalendary = "A"
       const defaultPlan = "test"
       const defaultYear = "2025"
+      const defaultResources: any[] = []
+      const defaultChats: any[] = []
+      const defaultNewChats: any[] = []
+      const defaultNewEvents: any[] = []
+      const defaultNewNews: any[] = []
 
       // Guarda el usuario en Firestore
-      await saveUserToFirestore(user.uid, displayName, photoURL, defaultCategory, defaultPlan, defaultYear, defaultCalendary, defaultColage, defaultGrade, photoURL, Uemail);
+      await saveUserToFirestore(
+        user.uid,
+        displayName,
+        photoURL,
+        defaultCategory,
+        defaultPlan,
+        defaultYear,
+        defaultCalendary,
+        defaultColage,
+        defaultGrade,
+        photoURL,
+        Uemail,
+        defaultResources,
+        defaultChats,
+        defaultNewChats,
+        defaultNewEvents,
+        defaultNewNews
+      );
 
       router.push("/dashboard");
     } catch (err: any) {

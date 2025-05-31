@@ -14,6 +14,7 @@
   --toolbar: #27272F;
   --app1-nav-bg: #E7E8E9;
   --lighter-bg: #fafafa;
+  --stroke-color: rgb(45,172,224);
   --span-bg: rgba(79,85,113,0.35);
   --gradient-home: linear-gradient(0deg, #0e0e1b 40%, #27272f9d);
   --gradient-heart: linear-gradient(180deg, #23374b5c, #23374b);
@@ -89,7 +90,12 @@ body {
   background: var(--gradient-heart);
   object-fit: cover;
 }
-
+.stroke-color {
+  stroke: var(--stroke-color);
+}
+.color-stroke {
+  fill: var(--stroke-color)
+}
 .primary-text {
   color: var(--text-primary-color);
 }

@@ -16,7 +16,6 @@ const App1Sidebar = () => {
         <App1Li name={'Avisos'} icon='/Advertisements1.svg' active={false}/>
         <App1Li name={'Tareas'} icon='/Homeworks1.svg' active={false}/>
         <App1Li name={'Calendario'} icon='/Calendary1.svg' active={false}/>
-        <App1Li name={'Asistencia'} icon='/Asistance1.svg' active={false}/>
         <App1Li name={'Recursos'} icon='/Resources1.svg' active={false}/>
         <App1Li name={'Clases'} icon='/Classes1.svg' active={false}/>
         <App1Li name={'Pagos'} icon='/Payments1.svg' active={false}/>

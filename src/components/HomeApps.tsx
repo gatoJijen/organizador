@@ -2,15 +2,15 @@ import React from 'react'
 import App from './App1'
 
 interface PropsHomeApps {
-    plan: string
+    categoria: string
 }
 
-const HomeApps: React.FC<PropsHomeApps> = ({ plan }) => {
+const HomeApps: React.FC<PropsHomeApps> = ({ categoria }) => {
   return (
     <article className='relative  z-10'>
         <h1 className='primary-text font-bold text-[23px]'>Todas las aplicaciones</h1>
         <div className='w-[90dvw] h-[full] flex pb-4 justify-start py-4 px-2 gap-4 overflow-x-auto overflow-y-hidden items-center'>
-          {plan === "test" ? (
+          {categoria === "user" ? (
             <>
             <App />
             </>
