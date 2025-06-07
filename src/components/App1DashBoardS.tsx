@@ -2,6 +2,8 @@ import { auth, db } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import Image from 'next/image'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 const App1DashBoardS = () => {
@@ -46,7 +48,7 @@ const App1DashBoardS = () => {
     }, [uid]);
 
     return (
-        <section className="secondary-text flex-col bg-background-2 rounded-xl shadow-xl py-4 flex gap-4 px-4 justify-center">
+        <section className="secondary-text  flex-col bg-background-2 rounded-xl shadow-xl py-4 flex gap-4 px-4 justify-center">
             <header className='flex gap-[30px] items-center'>
                 <Image className='opacity-70' src='/Homeworks1.svg' alt='' width={26} height={26} />
                 <h2 className='secondary-text font-bold text-lg'>Tareas</h2>

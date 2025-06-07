@@ -92,7 +92,7 @@ export default function AñadirRecursos({
   return (
     <>
       <button
-        className={`w-10 h-10 h-bg-stroke cursor-pointer transition-all ${background?background:'bg-stroke'} rounded-lg flex items-center justify-center`}
+        className={`w-10 h-10 h-bg-stroke cursor-pointer transition-all z-50 ${background?background:'bg-stroke'} rounded-lg flex items-center justify-center`}
         onClick={() => setModalOpen(true)}
       >
         <IoMdAdd color="white" size={28} />
