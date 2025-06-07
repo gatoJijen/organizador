@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { db } from '@/firebase/config';
 
@@ -21,78 +21,43 @@ const App1DashboardH = () => {
 
         return () => unsubscribe();
     }, []);
+
+    useEffect(() => {
+        if (!uid) return;
+    
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("uid", "==", uid));
+    
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            if (!querySnapshot.empty) {
+                const userDoc = querySnapshot.docs[0];
+                const userData = userDoc.data();
+    
+                const newsCount = Array.isArray(userData.newNews) ? userData.newNews.length : 0;
+                const eventsCount = Array.isArray(userData.newEvents) ? userData.newEvents.length : 0;
+                const chatsCount = Array.isArray(userData.newChats) ? userData.newChats.length : 0;
+    
+                setNewNewsCount(newsCount);
+                setNewEventsCount(eventsCount);
+                setNewChatsCount(chatsCount);
+            } else {
+                console.log("Documento no encontrado");
+                setNewNewsCount(null);
+                setNewEventsCount(null);
+                setNewChatsCount(null);
+            }
+        }, (error) => {
+            console.error("Error en onSnapshot:", error);
+        });
+    
+        return () => unsubscribe();
+    }, [uid]);
     
     const [newNewsCount, setNewNewsCount] = useState<number | null>(null);
     const [newEventsCount, setNewEventsCount] = useState<number | null>(null);
     const [newChatsCount, setNewChatsCount] = useState<number | null>(null);
-    const fetchNewNews = async () => {
-        try {
-            const usersRef = collection(db, "users");
-            const q = query(usersRef, where("uid", "==", uid));
-            const querySnapshot = await getDocs(q);
+   
 
-            if (!querySnapshot.empty) {
-                const userDoc = querySnapshot.docs[0];
-                const userData = userDoc.data();
-
-                const count = Array.isArray(userData.newNews) ? userData.newNews.length : 0;
-                setNewNewsCount(count);
-            } else {
-                console.log("Documento no encontrado");
-                setNewNewsCount(null);
-            }
-        } catch (error) {
-            console.error("Error al obtener el conteo de noticias:", error);
-            setNewNewsCount(null);
-        } 
-    };
-    const fetchNewEvents = async () => {
-        try {
-            const usersRef = collection(db, "users");
-            const q = query(usersRef, where("uid", "==", uid));
-            const querySnapshot = await getDocs(q);
-
-            if (!querySnapshot.empty) {
-                const userDoc = querySnapshot.docs[0];
-                const userData = userDoc.data();
-
-                const count = Array.isArray(userData.newEvents) ? userData.newEvents.length : 0;
-                setNewEventsCount(count);
-            } else {
-                console.log("Documento no encontrado");
-                setNewEventsCount(null);
-            }
-        } catch (error) {
-            console.error("Error al obtener el conteo de eventos:", error);
-            setNewEventsCount(null);
-        } 
-    };
-    const fetchNewChats = async () => {
-        try {
-            const usersRef = collection(db, "users");
-            const q = query(usersRef, where("uid", "==", uid));
-            const querySnapshot = await getDocs(q);
-
-            if (!querySnapshot.empty) {
-                const userDoc = querySnapshot.docs[0];
-                const userData = userDoc.data();
-
-                const count = Array.isArray(userData.newChats) ? userData.newChats.length : 0;
-                setNewChatsCount(count);
-            } else {
-                console.log("Documento no encontrado");
-                setNewChatsCount(null);
-            }
-        } catch (error) {
-            console.error("Error al obtener el conteo de chats:", error);
-            setNewChatsCount(null);
-        } 
-    };
-    useEffect(() => {
-        fetchNewNews();
-        fetchNewEvents();
-        fetchNewChats();
-    }, [uid]);
     return (
         <article className="secondary-text flex-wrap bg-lighter py-4 flex gap-4 px-4 rounded-xl shadow-xl items-center">
             <button className='w-[345px]  h-[55px] cursor-pointer bg-background-2 shadow-lg rounded-lg flex flex-row gap-2 items-center px-4'>
