@@ -15,6 +15,7 @@
   --app1-nav-bg: #E7E8E9;
   --lighter-bg: #fafafa;
   --stroke-color: rgb(45,172,224);
+  --stroke-color-hover: rgba(45, 173, 224, 0.5);
   --span-bg: rgba(79,85,113,0.35);
   --gradient-home: linear-gradient(0deg, #0e0e1b 40%, #27272f9d);
   --gradient-heart: linear-gradient(180deg, #23374b5c, #23374b);
@@ -101,6 +102,9 @@ body {
 }
 .bg-stroke {
   background-color: var(--stroke-color);
+}
+.h-bg-stroke:hover {
+  background-color: var(--stroke-color-hover);
 }
 .primary-text {
   color: var(--text-primary-color);

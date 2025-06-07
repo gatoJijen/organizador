@@ -70,9 +70,9 @@ const Page = () => {
     return (
         <section className='relative z-[999] bg-background-2'>
             {userData ? (
-                <div className='w-[100svw] flex h-[100svh]'>
+                <div className='w-[100svw] flex h-[100svh] overflow-x-hidden overflow-y-auto'>
                     <App1Sidebar />
-                    <section className="flex flex-col flex-wrap w-[100%] ">
+                    <section className="flex flex-col w-[100%] ">
                         <App1Nav title="Hola" user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} image={userData.image} email={userData.email} categoria={userData.categoria} />
                         <App1Dashboard/>
                     </section>
