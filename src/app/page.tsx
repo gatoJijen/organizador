@@ -19,7 +19,7 @@ const Page: React.FC = () => {
   const router = useRouter();
 
 
-  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string, resources: any[], chats: any[], newChats: any[], newEvents: any[], newNews: any[]) => {
+  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string, resources: any[], chats: any[], newChats: any[], newEvents: any[], newNews: any[], homeworks: any[], homeworksR: any[]) => {
     try {
       const userRef = doc(db, "users", uid); // Crea un documento con el UID del usuario
       await setDoc(userRef, {
@@ -38,7 +38,9 @@ const Page: React.FC = () => {
         chats,
         newChats,
         newEvents,
-        newNews
+        newNews,
+        homeworks,
+        homeworksR
       });
       console.log("Usuario guardado en Firestore");
     } catch (err) {
@@ -67,6 +69,8 @@ const Page: React.FC = () => {
       const defaultNewChats: any[] = []
       const defaultNewEvents: any[] = []
       const defaultNewNews: any[] = []
+      const defaultHomeworks: any[] = []
+      const defaultHomeworksR: any[] = []
 
       await updateProfile(user, {
         displayName: defaultDisplayName,
@@ -90,7 +94,9 @@ const Page: React.FC = () => {
         defaultChats,
         defaultNewChats,
         defaultNewEvents,
-        defaultNewNews
+        defaultNewNews,
+        defaultHomeworks,
+        defaultHomeworksR
       );
 
       router.push("/dashboard");
@@ -138,6 +144,8 @@ const Page: React.FC = () => {
       const defaultNewChats: any[] = []
       const defaultNewEvents: any[] = []
       const defaultNewNews: any[] = []
+      const defaultHomeworks: any[] = []
+      const defaultHomeworksR: any[] = []
 
       // Guarda el usuario en Firestore
       await saveUserToFirestore(
@@ -156,7 +164,9 @@ const Page: React.FC = () => {
         defaultChats,
         defaultNewChats,
         defaultNewEvents,
-        defaultNewNews
+        defaultNewNews,
+        defaultHomeworks,
+        defaultHomeworksR
       );
 
       router.push("/dashboard");
