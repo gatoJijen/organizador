@@ -96,6 +96,12 @@ body {
 .color-stroke {
   fill: var(--stroke-color)
 }
+.text-stroke {
+  color: var(--stroke-color)
+}
+.bg-stroke {
+  background-color: var(--stroke-color);
+}
 .primary-text {
   color: var(--text-primary-color);
 }

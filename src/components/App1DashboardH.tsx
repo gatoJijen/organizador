@@ -59,7 +59,7 @@ const App1DashboardH = () => {
    
 
     return (
-        <article className="secondary-text flex-wrap bg-lighter py-4 flex gap-4 px-4 rounded-xl shadow-xl items-center">
+        <header className="secondary-text flex-wrap bg-lighter py-4 flex gap-4 px-4 rounded-xl shadow-xl items-center">
             <button className='w-[345px]  h-[55px] cursor-pointer bg-background-2 shadow-lg rounded-lg flex flex-row gap-2 items-center px-4'>
                 <Link className='flex justify-between items-center w-full' href="/dashboard">
                     <section className='flex gap-8'>
@@ -111,7 +111,7 @@ const App1DashboardH = () => {
                     </section>
                 </Link>
             </button>
-        </article>
+        </header>
     )
 }
 
