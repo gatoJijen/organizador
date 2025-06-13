@@ -1,17 +1,15 @@
 "use client"
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation';
 import { auth, db } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import Loading from '@/components/Loading';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import App1Sidebar from '@/components/App1Sidebar';
 import App1Nav from '@/components/App1Nav';
 import App1Dashboard from '@/components/App1Dashboard';
-
-const Page = () => {
+import Loading from '@/components/Loading';
+import App1Avisos from '@/components/App1Avisos';
+const page = () => {
     const [user, setUser] = useState<any | null>(null);
     const [uid, setUid] = useState("")
     const [loading, setLoading] = useState(true);
@@ -71,10 +69,10 @@ const Page = () => {
         <section className='relative z-[999] bg-background-2'>
             {userData ? (
                 <div className='w-[100svw] flex h-[100svh] overflow-x-hidden overflow-y-auto'>
-                    <App1Sidebar Inicio={true} />
+                    <App1Sidebar Avisos={true} />
                     <section className="flex flex-col w-[100%] ">
-                        <App1Nav title="" user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} image={userData.image} email={userData.email} categoria={userData.categoria} />
-                        <App1Dashboard/>
+                        <App1Nav title="Avisos" user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} image={userData.image} email={userData.email} categoria={userData.categoria} />
+                        <App1Avisos plan={userData.plan} categoria={userData.categoria}/>
                     </section>
 
                 </div>
@@ -88,6 +86,4 @@ const Page = () => {
     )
 }
 
-export default Page
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
+export default page

@@ -28,7 +28,7 @@ const App1Nav = ({ title, user, año, calendario, colegio, grado, plan, image, e
     return (
         <nav className='w-[100%] flex h-[56px] px-[20px] justify-between items-center bg-app1-nav'>
             <section>
-                <h1 className='text-2xl font-medium secondary-text'>{title == "" ? "Hola" : title + ", " + user}</h1>
+                <h1 className='text-2xl font-medium secondary-text'>{title == "" ? "Hola" + ", " + user : title}</h1>
             </section>
             <section>
                 <span className='relative'>

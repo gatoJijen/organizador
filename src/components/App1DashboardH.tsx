@@ -61,7 +61,7 @@ const App1DashboardH = () => {
     return (
         <header className="secondary-text flex-wrap bg-lighter py-4 flex gap-4 px-4 rounded-xl shadow-xl items-center">
             <button className='w-[345px]  h-[55px] cursor-pointer bg-background-2 shadow-lg rounded-lg flex flex-row gap-2 items-center px-4'>
-                <Link className='flex justify-between items-center w-full' href="/dashboard">
+                <Link className='flex justify-between items-center w-full' href="/dashboard/Clic-Up/Avisos">
                     <section className='flex gap-8'>
                         <picture className='color-stroke'>
                             <svg xmlns="http://www.w3.org/2000/svg" className="stroke-color w-[26px] h-[26px]" viewBox="0 0 512 512">
@@ -77,22 +77,7 @@ const App1DashboardH = () => {
 
                 </Link>
             </button>
-            <button className='w-[345px] h-[55px] cursor-pointer bg-background-2 shadow-lg rounded-lg flex gap-2 items-center px-4'>
-                <Link className="flex justify-between items-center w-full" href="/dashboard">
-                    <section className='flex gap-8'>
-                        <picture className='color-stroke'>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="stroke-color w-[26px] h-[26px]" viewBox="0 0 512 512">
-                                <path d="M480 128a64 64 0 00-64-64h-16V48.45c0-8.61-6.62-16-15.23-16.43A16 16 0 00368 48v16H144V48.45c0-8.61-6.62-16-15.23-16.43A16 16 0 00112 48v16H96a64 64 0 00-64 64v12a4 4 0 004 4h440a4 4 0 004-4zM32 416a64 64 0 0064 64h320a64 64 0 0064-64V180a4 4 0 00-4-4H36a4 4 0 00-4 4z">
-                                </path>
-                            </svg>
-                        </picture>
-                        <p className='secondary-text font-bold text-lg'>Eventos</p>
-                    </section>
-                    <section className='flex'>
-                        <h1 className='text-2xl font-medium'>{newEventsCount}</h1>
-                    </section>
-                </Link>
-            </button>
+            
             <button className='w-[345px] h-[55px] cursor-pointer bg-background-2 shadow-lg rounded-lg flex gap-2 items-center px-4'>
                 <Link className="flex justify-between items-center w-full" href="/dashboard">
                     <section className='flex gap-8'>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
 // Importa tu cliente de Supabase y la función de obtener el usuario si es necesario
 
@@ -19,9 +19,18 @@ const Page: React.FC = () => {
   const router = useRouter();
 
 
-  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string, resources: any[], chats: any[], newChats: any[], newEvents: any[], newNews: any[], homeworks: any[], homeworksR: any[]) => {
+  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string, resources: any[], chats: any[], newChats: any[], newEvents: any[], newNews: any[], homeworks: any[], homeworksR: any[], news: any[], events: any[]) => {
     try {
-      const userRef = doc(db, "users", uid); // Crea un documento con el UID del usuario
+      const userRef = doc(db, "users", uid);
+      const snap = await getDoc(userRef);
+  
+      // Si ya existe, salimos (o podríamos hacer merge en vez de overwrite)
+      if (snap.exists()) {
+        console.log("El usuario ya existe, no lo sobrescribo.");
+        return;
+      }
+  
+      // Si no existe, lo creamos
       await setDoc(userRef, {
         displayName,
         photoURL,
@@ -40,8 +49,11 @@ const Page: React.FC = () => {
         newEvents,
         newNews,
         homeworks,
-        homeworksR
-      });
+        homeworksR,
+        news,
+        events
+      }, { merge: true }); // sólo afecta a este doc, sin borrar nada fuera de estas claves
+  
       console.log("Usuario guardado en Firestore");
     } catch (err) {
       console.error("Error al guardar el usuario en Firestore:", err);
@@ -71,6 +83,8 @@ const Page: React.FC = () => {
       const defaultNewNews: any[] = []
       const defaultHomeworks: any[] = []
       const defaultHomeworksR: any[] = []
+      const defaultNews: any[] = []
+      const defaultEvents: any[] = []
 
       await updateProfile(user, {
         displayName: defaultDisplayName,
@@ -96,7 +110,9 @@ const Page: React.FC = () => {
         defaultNewEvents,
         defaultNewNews,
         defaultHomeworks,
-        defaultHomeworksR
+        defaultHomeworksR,
+        defaultNews,
+        defaultEvents
       );
 
       router.push("/dashboard");
@@ -146,6 +162,8 @@ const Page: React.FC = () => {
       const defaultNewNews: any[] = []
       const defaultHomeworks: any[] = []
       const defaultHomeworksR: any[] = []
+      const defaultNews: any[] = []
+      const defaultEvents: any[] = []
 
       // Guarda el usuario en Firestore
       await saveUserToFirestore(
@@ -159,16 +177,17 @@ const Page: React.FC = () => {
         defaultColage,
         defaultGrade,
         photoURL,
-        Uemail,
+        email,
         defaultResources,
         defaultChats,
         defaultNewChats,
         defaultNewEvents,
         defaultNewNews,
         defaultHomeworks,
-        defaultHomeworksR
+        defaultHomeworksR,
+        defaultNews,
+        defaultEvents
       );
-
       router.push("/dashboard");
     } catch (err: any) {
       setError(err.message || "Error al registrar con Google");
