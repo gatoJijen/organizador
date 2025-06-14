@@ -225,6 +225,8 @@ useEffect(() => {
                                                 value={newContent}
                                                 onChange={(e) => setNewContent(e.target.value)}
                                                 placeholder="Contenido"
+                                                onKeyDown={(e) => newContent === "" || newTitle === "" ? null : e.key === 'Enter' && handleAddAvisoToAll()}
+                                                
                                                 className="mt-1 focus:outline-none px-4 py-2 block w-full rounded-md border-gray-300 shadow-lg"
                                             />
                                         </div>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { db } from '@/firebase/config';
+import { FaUserFriends } from 'react-icons/fa';
 
 const auth = getAuth();
 
@@ -34,16 +35,16 @@ const App1DashboardH = () => {
                 const userData = userDoc.data();
     
                 const newsCount = Array.isArray(userData.newNews) ? userData.newNews.length : 0;
-                const eventsCount = Array.isArray(userData.newEvents) ? userData.newEvents.length : 0;
+                const solicitudesCount = Array.isArray(userData.solicitudes) ? userData.solicitudes.length : 0;
                 const chatsCount = Array.isArray(userData.newChats) ? userData.newChats.length : 0;
     
                 setNewNewsCount(newsCount);
-                setNewEventsCount(eventsCount);
+                setSolicitudesCount(solicitudesCount);
                 setNewChatsCount(chatsCount);
             } else {
                 console.log("Documento no encontrado");
                 setNewNewsCount(null);
-                setNewEventsCount(null);
+                setSolicitudesCount(null);
                 setNewChatsCount(null);
             }
         }, (error) => {
@@ -54,7 +55,7 @@ const App1DashboardH = () => {
     }, [uid]);
     
     const [newNewsCount, setNewNewsCount] = useState<number | null>(null);
-    const [newEventsCount, setNewEventsCount] = useState<number | null>(null);
+    const [solicitudesCount, setSolicitudesCount] = useState<number | null>(null);
     const [newChatsCount, setNewChatsCount] = useState<number | null>(null);
    
 
@@ -93,6 +94,19 @@ const App1DashboardH = () => {
                     </section>
                     <section className='flex'>
                         <h1 className='text-2xl font-medium'>{newChatsCount}</h1>
+                    </section>
+                </Link>
+            </button>
+            <button className='w-[345px] h-[55px] cursor-pointer bg-background-2 shadow-lg rounded-lg flex gap-2 items-center px-4'>
+                <Link className="flex justify-between items-center w-full" href="/dashboard">
+                    <section className='flex gap-8'>
+                        <picture className='color-stroke text-stroke'>
+                            <FaUserFriends size={26} />
+                        </picture>
+                        <p className='secondary-text font-bold text-lg'>Solicitudes de amistad</p>
+                    </section>
+                    <section className='flex'>
+                        <h1 className='text-2xl font-medium'>{solicitudesCount}</h1>
                     </section>
                 </Link>
             </button>

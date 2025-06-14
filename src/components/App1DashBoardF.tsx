@@ -175,15 +175,15 @@ const App1DashBoardS = () => {
 
   return (
     <section className="secondary-text flex-col bg-background-2 rounded-xl shadow-xl py-4 flex gap-4 px-4 justify-center">
-      <Link href="/app1" className="flex items-center justify-between">
-        <article className='flex gap-[30px]'>
+      <article className="flex items-center justify-between">
+        <Link href="/app1" className='flex gap-[30px]'>
           <Image className="opacity-70" src="/Resources1.svg" alt="" width={26} height={26} />
           <h2 className="secondary-text font-bold text-lg">Recursos</h2>
-        </article>
+        </Link>
         <article>
           <AñadirRecursos />
         </article>
-      </Link>
+      </article>
       <footer className="flex items-center justify-center flex-col">
         <section className="flex flex-col gap-8 items-center  w-full">
           {recursos.length > 0 ? (

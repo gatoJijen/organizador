@@ -19,7 +19,7 @@ const Page: React.FC = () => {
   const router = useRouter();
 
 
-  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string, resources: any[], chats: any[], newChats: any[], newEvents: any[], newNews: any[], homeworks: any[], homeworksR: any[], news: any[], events: any[]) => {
+  const saveUserToFirestore = async (uid: string, displayName: string, photoURL: string, categoria: string, plan: string, año: string, calendario: string, colegio: string, grado: string, image: string, email: string, resources: any[], chats: any[], newChats: any[], solicitudes: any[], newNews: any[], homeworks: any[], homeworksR: any[], news: any[], friends: any[]) => {
     try {
       const userRef = doc(db, "users", uid);
       const snap = await getDoc(userRef);
@@ -46,12 +46,12 @@ const Page: React.FC = () => {
         resources,
         chats,
         newChats,
-        newEvents,
+        solicitudes,
         newNews,
         homeworks,
         homeworksR,
         news,
-        events
+        friends
       }, { merge: true }); // sólo afecta a este doc, sin borrar nada fuera de estas claves
   
       console.log("Usuario guardado en Firestore");
@@ -79,12 +79,12 @@ const Page: React.FC = () => {
       const defaultResources: any[] = []
       const defaultChats: any[] = []
       const defaultNewChats: any[] = []
-      const defaultNewEvents: any[] = []
+      const defaultSolicitudes: any[] = []
       const defaultNewNews: any[] = []
       const defaultHomeworks: any[] = []
       const defaultHomeworksR: any[] = []
       const defaultNews: any[] = []
-      const defaultEvents: any[] = []
+      const defaultFriends: any[] = []
 
       await updateProfile(user, {
         displayName: defaultDisplayName,
@@ -107,12 +107,12 @@ const Page: React.FC = () => {
         defaultResources,
         defaultChats,
         defaultNewChats,
-        defaultNewEvents,
+        defaultSolicitudes,
         defaultNewNews,
         defaultHomeworks,
         defaultHomeworksR,
         defaultNews,
-        defaultEvents
+        defaultFriends
       );
 
       router.push("/dashboard");
@@ -159,11 +159,11 @@ const Page: React.FC = () => {
       const defaultChats: any[] = []
       const defaultNewChats: any[] = []
       const defaultNewEvents: any[] = []
-      const defaultNewNews: any[] = []
+      const defaultSolicitudes: any[] = []
       const defaultHomeworks: any[] = []
       const defaultHomeworksR: any[] = []
       const defaultNews: any[] = []
-      const defaultEvents: any[] = []
+      const defaultFriends: any[] = []
 
       // Guarda el usuario en Firestore
       await saveUserToFirestore(
@@ -182,11 +182,11 @@ const Page: React.FC = () => {
         defaultChats,
         defaultNewChats,
         defaultNewEvents,
-        defaultNewNews,
+        defaultSolicitudes,
         defaultHomeworks,
         defaultHomeworksR,
         defaultNews,
-        defaultEvents
+        defaultFriends
       );
       router.push("/dashboard");
     } catch (err: any) {
