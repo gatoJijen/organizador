@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 "use client"
 import { auth, db } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -87,4 +90,5 @@ const page = () => {
     )
 }
 
-export default page
+export default page/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

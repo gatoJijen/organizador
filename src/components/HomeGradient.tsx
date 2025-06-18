@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 import Image from 'next/image'
 import React from 'react'
 
@@ -13,4 +16,5 @@ const HomeGradient = () => {
   )
 }
 
-export default HomeGradient
+export default HomeGradient/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

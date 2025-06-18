@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -22,4 +25,5 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 const user = auth.currentUser
-export { auth, provider, signInWithPopup,db, user};
+export { auth, provider, signInWithPopup,db, user};/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

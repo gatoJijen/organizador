@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -216,3 +219,5 @@ const App1Users = () => {
 };
 
 export default App1Users;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

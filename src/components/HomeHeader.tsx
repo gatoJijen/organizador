@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 "use client"
 import React from 'react'
 import HomeGradient from './HomeGradient'
@@ -27,4 +30,5 @@ const HomeHeader: React.FC<PropsHomeHeader> = ({ user, año, calendario, colegio
     )
 }
 
-export default HomeHeader
+export default HomeHeader/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

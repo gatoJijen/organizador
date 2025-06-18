@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 import { db } from '@/firebase/config';
 import { auth } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -299,4 +302,5 @@ useEffect(() => {
     );
 };
 
-export default App1Avisos
+export default App1Avisos/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

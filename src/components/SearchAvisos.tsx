@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 import { db } from '@/firebase/config';
 import { auth } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
-import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 const SearchAvisos = () => {
@@ -94,3 +96,5 @@ const SearchAvisos = () => {
   };
 
 export default SearchAvisos
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

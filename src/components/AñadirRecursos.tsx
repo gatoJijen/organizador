@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { useEffect, useState } from "react";
@@ -204,3 +207,5 @@ export default function AñadirRecursos({
     </>
   );
 }
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

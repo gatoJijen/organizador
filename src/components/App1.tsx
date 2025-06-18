@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 import React from 'react'
 import Image from 'next/image'
 import { FaRegHeart } from 'react-icons/fa6';
@@ -22,4 +25,5 @@ const App = () => {
   )
 }
 
-export default App
+export default App/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

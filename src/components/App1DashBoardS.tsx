@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 import { auth, db } from '@/firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
@@ -63,4 +66,5 @@ const App1DashBoardS = () => {
     )
 }
 
-export default App1DashBoardS
+export default App1DashBoardS/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

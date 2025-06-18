@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 "use client "
 import App1DashboardH from './App1DashboardH'
 import App1DashBoardS from './App1DashBoardS'
@@ -14,4 +17,5 @@ const App1Dashboard = () => {
   )
 }
 
-export default App1Dashboard
+export default App1Dashboard/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

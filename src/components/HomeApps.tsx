@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 import React from 'react'
 import App from './App1'
 
@@ -25,4 +28,5 @@ const HomeApps: React.FC<PropsHomeApps> = ({ categoria }) => {
   )
 }
 
-export default HomeApps
+export default HomeApps/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/

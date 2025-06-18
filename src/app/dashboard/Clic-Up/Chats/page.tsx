@@ -12,6 +12,7 @@ import App1Nav from '@/components/App1Nav';
 import App1Dashboard from '@/components/App1Dashboard';
 import Loading from '@/components/Loading';
 import App1Avisos from '@/components/App1Avisos';
+import App1Users from '@/components/App1Users';
 const page = () => {
     const [user, setUser] = useState<any | null>(null);
     const [uid, setUid] = useState("")
@@ -72,10 +73,10 @@ const page = () => {
         <section className='relative z-[999] bg-background-2'>
             {userData ? (
                 <div className='w-[100svw] flex h-[100svh] overflow-x-hidden overflow-y-auto'>
-                    <App1Sidebar Avisos={true} />
+                    <App1Sidebar Usuarios={true} />
                     <section className="flex flex-col w-[100%] ">
-                        <App1Nav title="Avisos" user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} image={userData.image} email={userData.email} categoria={userData.categoria} />
-                        <App1Avisos plan={userData.plan} categoria={userData.categoria}/>
+                        <App1Nav title="Chats" user={userData.displayName} año={userData.año} calendario={userData.calendario} colegio={userData.colegio} grado={userData.grado} plan={userData.plan} image={userData.image} email={userData.email} categoria={userData.categoria} />
+                        <App1Users />
                     </section>
 
                 </div>

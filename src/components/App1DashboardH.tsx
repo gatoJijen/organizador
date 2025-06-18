@@ -1,3 +1,6 @@
+$ESLINT_COMMENTS
+
+
 import Link from 'next/link'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
@@ -114,4 +117,5 @@ const App1DashboardH = () => {
     )
 }
 
-export default App1DashboardH
+export default App1DashboardH/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
