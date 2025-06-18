@@ -10,6 +10,8 @@ import App1Nav from '@/components/App1Nav';
 import App1Dashboard from '@/components/App1Dashboard';
 
 const Page = () => {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
     const [user, setUser] = useState<any | null>(null);
     const [uid, setUid] = useState("")
     const [loading, setLoading] = useState(true);
@@ -65,6 +67,8 @@ const Page = () => {
             fetchUserData();
         }
     }, [uid]);
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
     return (
         <section className='relative z-[999] bg-background-2'>
             {userData ? (
