@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/firebase/config';
+import { User } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 
 export const useAuth = () => {
   const router = useRouter();
-  const [user, setUser] = useState<any | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [uid, setUid] = useState("");
   const [loading, setLoading] = useState(true);
 
