@@ -13,7 +13,7 @@ import App1Dashboard from '@/components/App1Dashboard';
 import Loading from '@/components/Loading';
 import App1Avisos from '@/components/App1Avisos';
 import App1Users from '@/components/App1Users';
-const page = () => {
+const Page = () => {
     const [user, setUser] = useState<any | null>(null);
     const [uid, setUid] = useState("")
     const [loading, setLoading] = useState(true);
@@ -35,7 +35,7 @@ const page = () => {
         });
 
         return () => unsubscribe();
-    }, []);
+    }, []); // No dependencies needed for auth state
 
     const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string, categoria: string } | null>(null);
 
@@ -68,7 +68,7 @@ const page = () => {
         if (uid) {
             fetchUserData();
         }
-    }, [uid]);
+    }, [uid]); // uid is the only dependency for fetching user data
     return (
         <section className='relative z-[999] bg-background-2'>
             {userData ? (
@@ -90,5 +90,4 @@ const page = () => {
     )
 }
 
-export default page/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
+export default Page
