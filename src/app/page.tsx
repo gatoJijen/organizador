@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -227,8 +225,6 @@ const Page: React.FC = () => {
       handleSubmit(e as React.FormEvent);
     }
   };
-  /* eslint-disable @typescript-eslint/no-unused-vars*/
-  /* eslint-disable @typescript-eslint/no-explicit-any */
   return (
     <section className='flex flex-col items-center justify-center'>
       <header className='absolute h-full w-full z-[99]'>
@@ -294,5 +290,3 @@ const Page: React.FC = () => {
 };
 
 export default Page;
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/

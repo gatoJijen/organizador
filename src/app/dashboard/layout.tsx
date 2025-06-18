@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
 
 
 
@@ -20,5 +18,3 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return <div>{children}</div>;
 }
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/

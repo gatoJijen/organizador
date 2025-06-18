@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
+
 
 
 
@@ -20,5 +19,3 @@ export default function ClicUpLayout({ children }: { children: React.ReactNode }
 
   return <div>{children}</div>;
 }
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/

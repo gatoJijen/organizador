@@ -1,6 +1,4 @@
 "use client"
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
 import HomeHeader from '@/components/HomeHeader'
 import HomeNav from '@/components/HomeNav'
 import { auth, db } from '@/firebase/config';
@@ -87,6 +85,3 @@ const Home = () => {
 }
 
 export default Home
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/

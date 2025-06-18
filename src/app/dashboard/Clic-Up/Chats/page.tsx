@@ -1,19 +1,15 @@
 
 "use client"
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
-import { auth, db } from '@/firebase/config';
+import { db } from '@/firebase/config';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import App1Sidebar from '@/components/App1Sidebar';
 import App1Nav from '@/components/App1Nav';
-import App1Dashboard from '@/components/App1Dashboard';
 import Loading from '@/components/Loading';
-import App1Avisos from '@/components/App1Avisos';
 import App1Users from '@/components/App1Users';
 import { useAuth } from '@/hooks/useAuth';
 const Page = () => {
-    const { user, uid, loading } = useAuth();
+    const { uid } = useAuth();
 
     const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string, categoria: string } | null>(null);
 
