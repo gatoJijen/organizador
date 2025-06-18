@@ -47,7 +47,7 @@ const App1Users = () => {
   const [unsubRaw, setUnsubRaw] = useState<() => void>(() => () => {});
   const [unsubUserDoc, setUnsubUserDoc] = useState<() => void>(() => () => {});
   const [unsubSent, setUnsubSent] = useState<() => void>(() => () => {});
-  const pageSize = 10;
+  const pageSize = 5;
 
   // Subscribe to current user doc for solicitudes and friends
   const subscribeUserDoc = (uid: string) => {

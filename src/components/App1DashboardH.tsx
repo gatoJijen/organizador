@@ -86,7 +86,7 @@ const App1DashboardH = () => {
             </button>
             
             <button className='w-[345px] h-[55px] cursor-pointer bg-background-2 shadow-lg rounded-lg flex gap-2 items-center px-4'>
-                <Link className="flex justify-between items-center w-full" href="/dashboard">
+                <Link className="flex justify-between items-center w-full" href="/dashboard/Clic-Up/Chats">
                     <section className='flex gap-8'>
                         <picture className='color-stroke'>
                             <svg xmlns="http://www.w3.org/2000/svg" className="stroke-color w-[26px] h-[26px]" viewBox="0 0 512 512">
