@@ -31,5 +31,3 @@ const HomeWelcome:React.FC<PropsHomeWelcome> = ({user, año, calendario, colegio
 export default HomeWelcome
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars*/
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/

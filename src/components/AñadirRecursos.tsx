@@ -1,4 +1,5 @@
-$ESLINT_COMMENTS
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 
 
 import { doc, getDoc, updateDoc } from "firebase/firestore";
