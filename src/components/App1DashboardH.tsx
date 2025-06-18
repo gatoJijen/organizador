@@ -98,7 +98,7 @@ const App1DashboardH = () => {
                 </Link>
             </button>
             <button className='w-[345px] h-[55px] cursor-pointer bg-background-2 shadow-lg rounded-lg flex gap-2 items-center px-4'>
-                <Link className="flex justify-between items-center w-full" href="/dashboard">
+                <Link className="flex justify-between items-center w-full" href="/dashboard/Clic-Up/Usuarios">
                     <section className='flex gap-8'>
                         <picture className='color-stroke text-stroke'>
                             <FaUserFriends size={26} />
