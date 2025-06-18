@@ -35,7 +35,7 @@ const Page = () => {
         });
 
         return () => unsubscribe();
-    }, []); // No dependencies needed for auth state
+    }, [redirect]); // redirect is needed for auth state changes
 
     const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string, categoria: string } | null>(null);
 
