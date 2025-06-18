@@ -4,38 +4,16 @@
 
 
 import { auth, db } from '@/firebase/config';
-import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import App1Sidebar from '@/components/App1Sidebar';
 import App1Nav from '@/components/App1Nav';
 import App1Dashboard from '@/components/App1Dashboard';
 import Loading from '@/components/Loading';
 import App1Avisos from '@/components/App1Avisos';
+import { useAuth } from '@/hooks/useAuth';
 const Page = () => {
-    const [user, setUser] = useState<any | null>(null);
-    const [uid, setUid] = useState("")
-    const [loading, setLoading] = useState(true);
-    const router = useRouter();
-    const redirect = (url: string) => {
-        router.push(url);
-    };
-
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            setUid(currentUser?.uid || "");
-            if (!currentUser) {
-                redirect("/")
-            } else {
-                setLoading(false);
-            }
-        });
-
-        return () => unsubscribe();
-    }, [redirect]); // redirect is needed for auth state changes
+    const { user, uid, loading } = useAuth();
 
     const [userData, setUserData] = useState<{ año: string; plan: string; calendario: string; grado: string; colegio: string; displayName: string, image: string, email: string, categoria: string } | null>(null);
 
