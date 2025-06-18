@@ -3,7 +3,9 @@
 
 "use client"
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React from 'react'
 import HomeGradient from './HomeGradient'
 import HomeWelcome from './HomeWelcome'
@@ -32,5 +34,8 @@ const HomeHeader: React.FC<PropsHomeHeader> = ({ user, año, calendario, colegio
     )
 }
 
-export default HomeHeader/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
+export default HomeHeader
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+

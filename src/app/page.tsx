@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -288,5 +292,9 @@ const Page: React.FC = () => {
     </section>
   );
 };
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 export default Page;

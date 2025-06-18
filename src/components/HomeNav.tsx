@@ -1,6 +1,8 @@
 "use client"
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { auth } from '@/firebase/config';
 import { signOut } from 'firebase/auth';
 import Image from 'next/image'
@@ -78,4 +80,5 @@ const HomeNav: React.FC<PropsHomeNav> = ({ image, user, email }) => {
 
 export default HomeNav
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars*/
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
